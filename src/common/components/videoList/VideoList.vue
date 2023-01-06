@@ -3,94 +3,94 @@
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide v-for="(item, index) in dataList" :key="index">
         <div class="video-item">
-          <Videos ref="videos" :video="item" :index="index"></Videos>
+          <Videos ref="videos" :video="item.url" :index="index"></Videos>
         </div>
-        <div class="info-bar">
-          <InfoBar
-            :infoName="item.perName"
-            :infoDesc="item.perDesc"
-            :infoMusic="item.perMusicName"
-          ></InfoBar>
-        </div>
-        <div class="right-bar">
-          <RightBar
-            :perPicture="item.perPicture"
-            :perLikes="item.perLikes"
-            :perComments="item.perComments"
-            :perForward="item.perForward"
-            @changeCom="showOrClose"
-          ></RightBar>
-        </div>
+<!--        <div class="info-bar">-->
+<!--          <InfoBar-->
+<!--            :infoName="item.perName"-->
+<!--            :infoDesc="item.perDesc"-->
+<!--            :infoMusic="item.perMusicName"-->
+<!--          ></InfoBar>-->
+<!--        </div>-->
+<!--        <div class="right-bar">-->
+<!--          <RightBar-->
+<!--            :perPicture="item.perPicture"-->
+<!--            :perLikes="item.perLikes"-->
+<!--            :perComments="item.perComments"-->
+<!--            :perForward="item.perForward"-->
+<!--            @changeCom="showOrClose"-->
+<!--          ></RightBar>-->
+<!--        </div>-->
       </swiper-slide>
       <div class="swiper-pagination" slot="pagination"></div>
     </swiper>
-    <!-- 评论列表 -->
-    <transition name="up">
-      <div class="comment-wrap" v-if="showComment">
-        <div class="comment-list">
-          <div class="comment-top">
-            <div class="number">15条评论</div>
-            <div class="close" @click="showOrClose">
-              <span class="iconfont icon-guanbi"></span>
-            </div>
-          </div>
-          <div class="comment-body">
-            <div class="comment-box" v-for="i in 20" :key="i">
-              <div class="comment-item">
-                <img class="user-pic" src="@/assets/images/author.png" alt="" />
-                <div class="item-info">
-                  <div class="replay">
-                    <p class="name">八戒</p>
-                    <p class="replay-desc">
-                      程序员不加班不加班不加班不加班不加班不加班不加班不加班
-                    </p>
-                    <p class="time">
-                      03-20
-                      <span class="huifu">回复</span>
-                    </p>
-                  </div>
-                  <div class="zan">
-                    <span class="iconfont icon-aixin">
-                      <p>10</p>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="sub-comment-item">
-                <img class="user-pic" src="@/assets/images/author.png" alt="" />
-                <div class="item-info">
-                  <div class="replay">
-                    <p class="name">悟空</p>
-                    <p class="reply-name">不加班不加班</p>
-                    <p class="time">
-                      03-19
-                      <span class="huifu">回复</span>
-                    </p>
-                  </div>
-                  <div class="zan">
-                    <span class="iconfont icon-aixin">
-                      <p>20</p>
-                    </span>
-                  </div>
-                </div>
-              </div>
-              <div class="more">
-                —— 展开60条回复
-                <span class="iconfont icon-xiajiantou"></span>
-              </div>
-            </div>
-          </div>
-          <!-- 输入评论 -->
-          <div class="reply-input">
-            <input type="text" placeholder="留下你的精彩评论吧" />
-            <div class="input-right">
-              <span class="iconfont icon-aite"></span>
-              <span class="iconfont icon-biaoqing"></span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </transition>
+<!--    &lt;!&ndash; 评论列表 &ndash;&gt;-->
+<!--    <transition name="up">-->
+<!--      <div class="comment-wrap" v-if="showComment">-->
+<!--        <div class="comment-list">-->
+<!--          <div class="comment-top">-->
+<!--            <div class="number">15条评论</div>-->
+<!--            <div class="close" @click="showOrClose">-->
+<!--              <span class="iconfont icon-guanbi"></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          <div class="comment-body">-->
+<!--            <div class="comment-box" v-for="i in 20" :key="i">-->
+<!--              <div class="comment-item">-->
+<!--                <img class="user-pic" src="@/assets/images/author.png" alt="" />-->
+<!--                <div class="item-info">-->
+<!--                  <div class="replay">-->
+<!--                    <p class="name">八戒</p>-->
+<!--                    <p class="replay-desc">-->
+<!--                      程序员不加班不加班不加班不加班不加班不加班不加班不加班-->
+<!--                    </p>-->
+<!--                    <p class="time">-->
+<!--                      03-20-->
+<!--                      <span class="huifu">回复</span>-->
+<!--                    </p>-->
+<!--                  </div>-->
+<!--                  <div class="zan">-->
+<!--                    <span class="iconfont icon-aixin">-->
+<!--                      <p>10</p>-->
+<!--                    </span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="sub-comment-item">-->
+<!--                <img class="user-pic" src="@/assets/images/author.png" alt="" />-->
+<!--                <div class="item-info">-->
+<!--                  <div class="replay">-->
+<!--                    <p class="name">悟空</p>-->
+<!--                    <p class="reply-name">不加班不加班</p>-->
+<!--                    <p class="time">-->
+<!--                      03-19-->
+<!--                      <span class="huifu">回复</span>-->
+<!--                    </p>-->
+<!--                  </div>-->
+<!--                  <div class="zan">-->
+<!--                    <span class="iconfont icon-aixin">-->
+<!--                      <p>20</p>-->
+<!--                    </span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </div>-->
+<!--              <div class="more">-->
+<!--                —— 展开60条回复-->
+<!--                <span class="iconfont icon-xiajiantou"></span>-->
+<!--              </div>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          &lt;!&ndash; 输入评论 &ndash;&gt;-->
+<!--          <div class="reply-input">-->
+<!--            <input type="text" placeholder="留下你的精彩评论吧" />-->
+<!--            <div class="input-right">-->
+<!--              <span class="iconfont icon-aite"></span>-->
+<!--              <span class="iconfont icon-biaoqing"></span>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </transition>-->
   </div>
 </template>
 
@@ -107,8 +107,8 @@
       Swiper,
       SwiperSlide,
       Videos,
-      InfoBar,
-      RightBar,
+      // InfoBar,
+      // RightBar,
     },
     directives: {
       swiper: directive,
@@ -185,6 +185,7 @@
         .catch((err) => {
           console.log(err);
         });
+      // console.log(this.dataList.list.url)
     },
     methods: {
       playAction(index) {

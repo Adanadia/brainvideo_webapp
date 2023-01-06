@@ -11,25 +11,25 @@
       </div>
     </div>
     <div class="sign-box">
-      <div class="sele">
-        <select class="sele-controll" v-model="telErea">
-          <option value="+86">+86</option>
-        </select>
-      </div>
+<!--      <div class="sele">-->
+<!--        <select class="sele-controll" v-model="telErea">-->
+<!--          <option value="+86">+86</option>-->
+<!--        </select>-->
+<!--      </div>-->
       <em />
       <div class="inp">
         <input
           v-model="tel"
           @input="changeTel"
-          type="tel"
+          type="email"
           class="inp-controll"
-          placeholder="请输入手机号码"
+          placeholder="请输入邮箱"
         />
       </div>
     </div>
-    <div class="not-sign">
-      <p>未注册的手机号验证通过后将自动注册</p>
-    </div>
+<!--    <div class="not-sign">-->
+<!--      <p>未注册的手机号验证通过后将自动注册</p>-->
+<!--    </div>-->
     <div class="code-btn">
       <button
         :disabled="disabled"
@@ -37,18 +37,18 @@
         @click="getCode"
       >
         <div v-if="!loading">
-          获取短信验证码
+          下一步
         </div>
         <div v-else class="loading">
           <van-loading color="#1989fa" size="16px"/>
-          发送中
+          请稍后
         </div>
       </button>
     </div>
-    <div class="other">
-      <router-link href="" tag="a" to="pwSign">密码登录</router-link>
-      <a @click="show">其他方式登录</a>
-    </div>
+<!--    <div class="other">-->
+<!--      <router-link href="" tag="a" to="pwSign">密码登录</router-link>-->
+<!--      <a @click="show">其他方式登录</a>-->
+<!--    </div>-->
     <transition name="up">
       <div class="mask" v-if="showMask" @click="close">
         <div class="oauth">
@@ -109,7 +109,7 @@ export default {
         changeTel(e) {
             this.tel = e.target.value;
             console.log(this.tel);
-            const regTel = /^[1][3,4,5,6,7,8,9][0-9]{9}$/;
+            const regTel = /[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
             if (regTel.test(this.tel)) {
                 console.log('符合正则表达式');
                 this.btnBg = true;

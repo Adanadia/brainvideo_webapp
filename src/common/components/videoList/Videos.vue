@@ -24,7 +24,7 @@ export default {
         // videojs options
         playerOptions: {
             // 默认情况下将会消除任何音频。
-            muted: true,
+            muted: false,
             // 如果true,浏览器准备好时开始回放。
             autoplay: false,
             // 导致视频一结束就重新开始。

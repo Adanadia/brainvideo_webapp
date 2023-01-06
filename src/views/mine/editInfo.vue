@@ -18,12 +18,14 @@
             <span class="iconfont icon-right"></span>
           </span>
         </div>
-        <div class="edit-item" @click="$router.push({name: 'update', params: {title: '抖音号' , content: userInfo.dyh, desc: '最多16个字，只允许包含字母、数字、下划线和点，30天内仅能修改一次', type: 'dyh'}})">
-          <span class="label">抖音号</span>
-          <span>
-            {{ userInfo.dyh }}
-            <span class="iconfont icon-right"></span>
-          </span>
+<!--        @click="$router.push({name: 'update', params: {title: '抖音号' , content: userInfo.sid, desc: '最多16个字，只允许包含字母、数字、下划线和点，30天内仅能修改一次', type: 'dyh'}})"-->
+        <div class="edit-item">
+          <span class="label">学号</span>
+          {{ userInfo.sid }}
+<!--          <span>-->
+<!--            {{ userInfo.sid }}-->
+<!--            <span class="iconfont icon-right"></span>-->
+<!--          </span>-->
         </div>
         <div class="edit-item" @click="$router.push({name: 'update', params: {title: '简介' , content: userInfo.desc, desc: '填写个人简介更容易获得别人关注哦', type: 'desc'}})">
           <span class="label">简介</span>
@@ -34,31 +36,33 @@
         </div>
         <div class="edit-item">
           <span class="label">性别</span>
-          <span>
-            {{ userInfo.sex }}
-            <span class="iconfont icon-right"></span>
-          </span>
+          {{ userInfo.sex }}
+<!--          <span>-->
+<!--            {{ userInfo.sex }}-->
+<!--            <span class="iconfont icon-right"></span>-->
+<!--          </span>-->
         </div>
-        <div class="edit-item">
-          <span class="label">生日</span>
-          <span>
-            {{ userInfo.birthday }}
-            <span class="iconfont icon-right"></span>
-          </span>
-        </div>
-        <div class="edit-item">
-          <span class="label">所在地</span>
-          <span>
-            {{ userInfo.region }}
-            <span class="iconfont icon-right"></span>
-          </span>
-        </div>
+<!--        <div class="edit-item">-->
+<!--          <span class="label">生日</span>-->
+<!--          <span>-->
+<!--            {{ userInfo.birthday }}-->
+<!--            <span class="iconfont icon-right"></span>-->
+<!--          </span>-->
+<!--        </div>-->
+<!--        <div class="edit-item">-->
+<!--          <span class="label">所在地</span>-->
+<!--          <span>-->
+<!--            {{ userInfo.region }}-->
+<!--            <span class="iconfont icon-right"></span>-->
+<!--          </span>-->
+<!--        </div>-->
         <div class="edit-item">
           <span class="label">学校</span>
-          <span>
-            {{ userInfo.school === "" ? "点击设置" : userInfo.school }}
-            <span class="iconfont icon-right"></span>
-          </span>
+          {{ userInfo.school === "" ? "点击设置" : userInfo.school }}
+<!--          <span>-->
+<!--            {{ userInfo.school === "" ? "点击设置" : userInfo.school }}-->
+<!--            <span class="iconfont icon-right"></span>-->
+<!--          </span>-->
         </div>
       </div>
     </div>

@@ -10,8 +10,8 @@
     </div>
     <div class="sign-content">
       <div class="des">
-        <h2>请输入验证码</h2>
-        <p>验证码已通过短信发送至+86{{ tel }}</p>
+        <h2>请输入密码</h2>
+        <p>若密码忘记请联系实验室重置</p>
       </div>
     </div>
     <div class="sign-box">
@@ -19,18 +19,18 @@
         <input
           v-model="code"
           @input="changeCode"
-          type="number"
+          type="password"
           class="inp-controll"
-          placeholder="请输入验证码"
+          placeholder="请输入密码"
         />
       </div>
-      <div class="time">
-        {{ time }}
-      </div>
+<!--      <div class="time">-->
+<!--        {{ time }}-->
+<!--      </div>-->
     </div>
-    <div class="not-dx">
-      <p>收不到短信？<a>获取语言验证码</a></p>
-    </div>
+<!--    <div class="not-dx">-->
+<!--      <p>收不到短信？<a>获取语言验证码</a></p>-->
+<!--    </div>-->
     <div class="code-btn">
       <button :class="btnBg ? 'active' : ''" @click="Login">
         <div v-if="!loading">
@@ -85,7 +85,7 @@ export default {
         },
         // 获取验证码
         getCode() {
-            this.$toast('验证码发送成功');
+            // this.$toast('验证码发送成功');
             this.verifyCode = this.$store.state.sign.verifyCode;
             this.countDown();
         },

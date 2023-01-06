@@ -23,16 +23,16 @@
           />
           <div class="info-right">
             <button class="btn" @click="gotoEdit">编辑资料</button>
-            <button class="btn">
-              <span class="iconfont icon-jiahao1"></span> 朋友
-            </button>
+<!--            <button class="btn">-->
+<!--              <span class="iconfont icon-jiahao1"></span> 朋友-->
+<!--            </button>-->
           </div>
         </div>
         <!-- 用户信息 -->
         <div class="desc">
           <h2>{{ userInfo.name }}</h2>
           <p class="dyh">
-            抖音号：{{ userInfo.dyh }}
+            学号：{{ userInfo.sid }}
             <span class="iconfont icon-erweima"></span>
           </p>
           <p class="jj">{{ userInfo.desc }}</p>
@@ -46,78 +46,78 @@
           <span>{{ userInfo.region }}</span>
           <span><span class="iconfont icon-jiahao1"></span>添加学校等标签</span>
         </div>
-        <div class="user-tag2">
-          <span><a>{{ userInfo.like }}</a>获赞</span>
-          <span><a>{{ userInfo.follow }}</a>关注</span>
-          <span><a>{{ userInfo.fans }}</a>粉丝</span>
-        </div>
+<!--        <div class="user-tag2">-->
+<!--          <span><a>{{ userInfo.like }}</a>获赞</span>-->
+<!--          <span><a>{{ userInfo.follow }}</a>关注</span>-->
+<!--          <span><a>{{ userInfo.fans }}</a>粉丝</span>-->
+<!--        </div>-->
       </div>
     </div>
     <!-- 内容切换 -->
-    <div class="mine-tab">
-      <div class="tab-navbar">
-        <div
-          class="item"
-          @click="changeTab(0)"
-          :class="indexTab === 0 ? 'active' : ''"
-        >
-          作品
-        </div>
-        <div
-          class="item"
-          @click="changeTab(1)"
-          :class="indexTab === 1 ? 'active' : ''"
-        >
-          私密<span class="iconfont icon-suo"></span>
-        </div>
-        <div
-          class="item"
-          @click="changeTab(2)"
-          :class="indexTab === 2 ? 'active' : ''"
-        >
-          喜欢<span class="iconfont icon-suo"></span>
-        </div>
-      </div>
-      <div class="tab-wrap" v-if="userInfo.vlist">
-        <!-- 作品 -->
-        <div class="tab-con" v-show="indexTab === 0">
-          <div class="tab-con1" :v-if="userInfo.vlist.works.length === 0">
-            <h3>暂无作品</h3>
-          </div>
-          <div class="tab-img" :v-if="userInfo.vlist.works.length !== 0" v-for="i in userInfo.vlist.works" :key="i">
-            <img
-              src="@/assets/images/mine/bj.png"
-              style="width: 100%; height: auto"
-            />
-          </div>
-        </div>
-        <!-- 私密 -->
-        <div class="tab-con" v-show="indexTab === 1">
-          <div class="tab-con2" :v-if="userInfo.vlist.private.length === 0">
-            <h3>没有私密作品</h3>
-            <p>设为私密的作品和过期的日记会出现在这里，并且只有你能看到</p>
-          </div>
-          <div class="tab-img" v-for="i in userInfo.vlist.private" :key="i">
-            <img
-              src="@/assets/images/mine/bj2.png"
-              style="width: 100%; height: auto"
-            />
-          </div>
-        </div>
-        <!-- 喜欢 -->
-        <div class="tab-con" v-show="indexTab === 2">
-          <div class="tab-con1" :v-if="userInfo.vlist.likes.length === 0">
-            <h3>空空如也</h3>
-          </div>
-          <div>
-            <div class="tab-con3">只有你能看到自己的喜欢列表</div>
-            <div class="tab-img" :v-if="userInfo.vlist.likes.length !== 0" v-for="i in userInfo.vlist.likes" :key="i">
-              <img src="@/assets/images/mine/bj3.png" style="width: 100%; height: auto" />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+<!--    <div class="mine-tab">-->
+<!--      <div class="tab-navbar">-->
+<!--        <div-->
+<!--          class="item"-->
+<!--          @click="changeTab(0)"-->
+<!--          :class="indexTab === 0 ? 'active' : ''"-->
+<!--        >-->
+<!--          作品-->
+<!--        </div>-->
+<!--        <div-->
+<!--          class="item"-->
+<!--          @click="changeTab(1)"-->
+<!--          :class="indexTab === 1 ? 'active' : ''"-->
+<!--        >-->
+<!--          私密<span class="iconfont icon-suo"></span>-->
+<!--        </div>-->
+<!--        <div-->
+<!--          class="item"-->
+<!--          @click="changeTab(2)"-->
+<!--          :class="indexTab === 2 ? 'active' : ''"-->
+<!--        >-->
+<!--          喜欢<span class="iconfont icon-suo"></span>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--      <div class="tab-wrap" v-if="userInfo.vlist">-->
+<!--        &lt;!&ndash; 作品 &ndash;&gt;-->
+<!--        <div class="tab-con" v-show="indexTab === 0">-->
+<!--          <div class="tab-con1" :v-if="userInfo.vlist.works.length === 0">-->
+<!--            <h3>暂无作品</h3>-->
+<!--          </div>-->
+<!--          <div class="tab-img" :v-if="userInfo.vlist.works.length !== 0" v-for="i in userInfo.vlist.works" :key="i">-->
+<!--            <img-->
+<!--              src="@/assets/images/mine/bj.png"-->
+<!--              style="width: 100%; height: auto"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; 私密 &ndash;&gt;-->
+<!--        <div class="tab-con" v-show="indexTab === 1">-->
+<!--          <div class="tab-con2" :v-if="userInfo.vlist.private.length === 0">-->
+<!--            <h3>没有私密作品</h3>-->
+<!--            <p>设为私密的作品和过期的日记会出现在这里，并且只有你能看到</p>-->
+<!--          </div>-->
+<!--          <div class="tab-img" v-for="i in userInfo.vlist.private" :key="i">-->
+<!--            <img-->
+<!--              src="@/assets/images/mine/bj2.png"-->
+<!--              style="width: 100%; height: auto"-->
+<!--            />-->
+<!--          </div>-->
+<!--        </div>-->
+<!--        &lt;!&ndash; 喜欢 &ndash;&gt;-->
+<!--        <div class="tab-con" v-show="indexTab === 2">-->
+<!--          <div class="tab-con1" :v-if="userInfo.vlist.likes.length === 0">-->
+<!--            <h3>空空如也</h3>-->
+<!--          </div>-->
+<!--          <div>-->
+<!--            <div class="tab-con3">只有你能看到自己的喜欢列表</div>-->
+<!--            <div class="tab-img" :v-if="userInfo.vlist.likes.length !== 0" v-for="i in userInfo.vlist.likes" :key="i">-->
+<!--              <img src="@/assets/images/mine/bj3.png" style="width: 100%; height: auto" />-->
+<!--            </div>-->
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 

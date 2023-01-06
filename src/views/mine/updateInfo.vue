@@ -22,9 +22,7 @@
         <span class="iconfont icon-guanbi1" @click="clear"></span>
         <span class="length">{{ content.length }}/{{ maxLenght }}</span>
       </div>
-
-      <!-- 修改抖音号 -->
-      <div v-if="type === 'dyh'">
+      <div v-if="type === 'sid'">
         <p class="title">我的{{ title }}</p>
         <input
           type="text"
