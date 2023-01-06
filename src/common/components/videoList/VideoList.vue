@@ -3,7 +3,7 @@
     <swiper ref="mySwiper" :options="swiperOptions">
       <swiper-slide v-for="(item, index) in dataList" :key="index">
         <div class="video-item">
-          <Videos ref="videos" :video="item.url" :index="index"></Videos>
+          <Videos ref="videos" :video="item" :index="index"></Videos>
         </div>
 <!--        <div class="info-bar">-->
 <!--          <InfoBar-->
