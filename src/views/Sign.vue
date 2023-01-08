@@ -19,11 +19,11 @@
       <em />
       <div class="inp">
         <input
-          v-model="tel"
-          @input="changeTel"
-          type="email"
+          v-model="sid"
+          @input="checkSID"
+          type="sid"
           class="inp-controll"
-          placeholder="请输入邮箱"
+          placeholder="请输入学号"
         />
       </div>
     </div>
@@ -49,37 +49,38 @@
 <!--      <router-link href="" tag="a" to="pwSign">密码登录</router-link>-->
 <!--      <a @click="show">其他方式登录</a>-->
 <!--    </div>-->
-    <transition name="up">
-      <div class="mask" v-if="showMask" @click="close">
-        <div class="oauth">
-          <ul>
-            <li class="oauth-item">
-              <img src="@/assets/images/icon/tt.png" alt="" />
-              <span>今日头条登录</span>
-            </li>
-            <li class="oauth-item">
-              <img src="@/assets/images/icon/QQ.png" alt="" />
-              <span>QQ登录</span>
-            </li>
-            <li class="oauth-item">
-              <img src="@/assets/images/icon/wx.png" alt="" />
-              <span>微信登录</span>
-            </li>
-            <li class="oauth-item">
-              <img src="@/assets/images/icon/wb.png" alt="" />
-              <span>微博登录</span>
-            </li>
-            <li class="quxiao" @click="close">取消</li>
-          </ul>
-        </div>
-      </div>
-    </transition>
+<!--    <transition name="up">-->
+<!--      <div class="mask" v-if="showMask" @click="close">-->
+<!--        <div class="oauth">-->
+<!--          <ul>-->
+<!--            <li class="oauth-item">-->
+<!--              <img src="@/assets/images/icon/tt.png" alt="" />-->
+<!--              <span>今日头条登录</span>-->
+<!--            </li>-->
+<!--            <li class="oauth-item">-->
+<!--              <img src="@/assets/images/icon/QQ.png" alt="" />-->
+<!--              <span>QQ登录</span>-->
+<!--            </li>-->
+<!--            <li class="oauth-item">-->
+<!--              <img src="@/assets/images/icon/wx.png" alt="" />-->
+<!--              <span>微信登录</span>-->
+<!--            </li>-->
+<!--            <li class="oauth-item">-->
+<!--              <img src="@/assets/images/icon/wb.png" alt="" />-->
+<!--              <span>微博登录</span>-->
+<!--            </li>-->
+<!--            <li class="quxiao" @click="close">取消</li>-->
+<!--          </ul>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </transition>-->
   </div>
 </template>
 
 <script>
 import Vue from 'vue';
 import { Loading } from 'vant';
+import { GET } from '@/request/http';
 
 Vue.use(Loading);
 
@@ -87,9 +88,9 @@ export default {
     data() {
         return {
             // 号码所属地
-            telErea: '+86',
+            // telErea: '+86',
             // 手机号 v-modal input输入框 双向数据绑定
-            tel: '',
+            sid: '',
             // 是否显示其它登录方式
             showMask: false,
             // 用于‘获取短信验证码’按钮动态样式处理
@@ -106,16 +107,16 @@ export default {
         close() {
             this.showMask = false;
         },
-        changeTel(e) {
-            this.tel = e.target.value;
-            console.log(this.tel);
-            const regTel = /[a-zA-Z0-9]+([-_.][A-Za-zd]+)*@([a-zA-Z0-9]+[-.])+[A-Za-zd]{2,5}$/;
-            if (regTel.test(this.tel)) {
-                console.log('符合正则表达式');
+        checkSID(e) {
+            this.sid = e.target.value;
+            console.log(this.sid);
+            const regTel = /[A-Z][0-9]{8}$/;
+            if (regTel.test(this.sid)) {
+                // console.log('符合正则表达式');
                 this.btnBg = true;
                 this.disabled = false;
             } else {
-                console.log('不符合正则表达式');
+                // console.log('不符合正则表达式');
                 this.btnBg = false;
                 this.disabled = true;
             }
@@ -124,7 +125,14 @@ export default {
           this.loading = true;
           setTimeout(() => {
             this.loading = false;
-            this.$router.push({ name: 'codeSign', query: { tel: this.tel } });
+            GET('/login/api/users')
+              .then((response) => response.toString())
+              .then((result) => {
+                if (result === '0') {
+                  this.$router.push({ name: 'codeSign', query: { sid: this.sid } });
+                } else {
+                }
+              });
           }, 1500);
         },
     },
