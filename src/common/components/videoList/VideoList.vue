@@ -177,7 +177,7 @@
       },
     },
     created() {
-      GET('/static/videoData.json')
+      GET('/video')
         .then((res) => {
           console.log(res.data.list);
           this.dataList = res.data.list;

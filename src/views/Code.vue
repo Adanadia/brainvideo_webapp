@@ -47,12 +47,13 @@
 
 <script>
 import { mapActions } from 'vuex';
+import { GET, POST } from '@/request/http';
 
 export default {
     data() {
         return {
-            // 电话号码
-            tel: '',
+            // 学号
+            sid: '',
             // 验证码
             code: '',
             // state中提供的验证码
@@ -66,21 +67,28 @@ export default {
         };
     },
     created() {
-        this.getCode();
-        this.tel = this.$route.query.tel;
-        console.log(this.tel);
+        // this.getCode();
+        this.sid = this.$route.query.sid;
+        // console.log(this.sid);
     },
     methods: {
         ...mapActions('sign', ['sign']),
         // 监听输入验证码
         changeCode(e) {
             this.code = e.target.value;
-            console.log(this.code, this.verifyCode);
-            if (this.code === this.verifyCode) {
-                this.disabled = true;
-                this.btnBg = true;
+            // console.log(this.code, this.verifyCode);
+            // if (this.code === this.verifyCode) {
+            //     this.disabled = true;
+            //     this.btnBg = true;
+            // } else {
+            //     this.disabled = false;
+            // }
+            if (this.code !== null) {
+              this.disabled = true;
+              this.btnBg = true;
             } else {
-                this.disabled = false;
+              this.disabled = false;
+              this.btnBg = false;
             }
         },
         // 获取验证码
@@ -99,24 +107,34 @@ export default {
             }
         },
         // 登录按钮点击事件
-        Login() {
+        async Login() {
           if (!this.disabled) {
             this.$toast({
-              message: '请输入正确的验证码',
+              message: '请输入密码',
               type: 'error',
               duration: 2000,
             });
           } else {
             this.loading = true;
+            const ret = await POST('/login/pwdcheck', { sid: this.sid, pwd: this.code });
             this.msg = '登录中';
-            setTimeout(() => {
+            if (ret.data.toString() === '1') {
+              setTimeout(() => {
                 this.loading = false;
                 this.msg = '登录成功';
-            }, 1500);
-            setTimeout(() => {
+              }, 1500);
+              setTimeout(() => {
                 // 登录跳转操作
                 this.sign({ code: this.code });
-            }, 2000);
+              }, 2000);
+            } else {
+              this.$toast({
+                message: '密码错误',
+                type: 'error',
+                duration: 2000,
+              });
+              this.msg = '登陆';
+            }
           }
         },
         // 返回
