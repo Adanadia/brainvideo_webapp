@@ -9,14 +9,15 @@ function resolve(dir) {
 
 
 module.exports = {
+  lintOnSave: false,
   // 设置打包文件输出路径
   outputDir: process.env.NODE_ENV === 'production' ?  'dist': 'dy' ,
   // 生产环境是否生成SourceMap
-  productionSourceMap: false, 
+  productionSourceMap: false,
   // 资源访问路径
   publicPath: process.env.VUE_APP_NGINX_CONTENT,
   devServer: {
-    port,
+    port: 8000,
     // 启动之后 自动打开浏览器
     open: true,
     // 报错的时候全屏显示错误
@@ -24,14 +25,16 @@ module.exports = {
       warnings: false,
       errors: true
     },
-    //代理
-    // proxy: {
-    // '/api': {
-    //   target: '',
-    //   ws: true,
-    //   changeOrigin: true
-    // },
-    // }
+    proxy: {
+      '/api': {
+       target: 'http://127.0.0.1:3000/',
+       pathRewrite:{
+         '^/api': ''
+       },
+       ws: true,
+       changeOrigin: true
+      },
+    }
   },
   css: {
 

@@ -80,7 +80,7 @@
 <script>
 import Vue from 'vue';
 import { Loading } from 'vant';
-import { GET } from '@/request/http';
+import { GET, POST } from '@/request/http';
 
 Vue.use(Loading);
 
@@ -109,7 +109,7 @@ export default {
         },
         checkSID(e) {
             this.sid = e.target.value;
-            console.log(this.sid);
+            // console.log(this.sid);
             const regTel = /[A-Z][0-9]{8}$/;
             if (regTel.test(this.sid)) {
                 // console.log('符合正则表达式');
@@ -123,16 +123,18 @@ export default {
         },
         getCode() {
           this.loading = true;
-          setTimeout(() => {
+          setTimeout(async () => {
             this.loading = false;
-            GET('/login/api/users')
-              .then((response) => response.toString())
-              .then((result) => {
-                if (result === '0') {
-                  this.$router.push({ name: 'codeSign', query: { sid: this.sid } });
-                } else {
-                }
+            const ret = await POST('/login/users', { sid: this.sid });
+            if (ret.data.toString() === '1') {
+              this.$router.push({ name: 'codeSign', query: { sid: this.sid } });
+            } else {
+              this.$toast({
+                message: '学号不存在请联系管理员',
+                type: 'error',
+                duration: 2000,
               });
+            }
           }, 1500);
         },
     },

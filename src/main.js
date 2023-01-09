@@ -10,7 +10,7 @@ import Toast from './common/components/toast/toast';
 
 Vue.prototype.$toast = Toast;
 Vue.config.productionTip = false;
-axios.defaults.baseURL = 'http://localhost:3000';
+axios.defaults.baseURL = 'http://localhost:8000/api';
 
 new Vue({
   router,
