@@ -23,18 +23,18 @@ module.exports = {
     // 报错的时候全屏显示错误
     overlay: {
       warnings: false,
-      errors: true
+      errors: true,
     },
     proxy: {
       '/api': {
        target: 'http://127.0.0.1:3000/',
-       pathRewrite:{
-         '^/api': ''
+       pathRewrite: {
+         '^/api': '',
        },
        ws: true,
-       changeOrigin: true
+       changeOrigin: true,
       },
-    }
+    },
   },
   css: {
 

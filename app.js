@@ -4,7 +4,7 @@ var http = require('http');
 var app = express();
 app.use(express.static('./dy'));
 app.use(function (req, res,next) {
-  res.sendFile('./dy/index.html');  //路径根据自己文件配置
+  res.sendFile('./dy/index.html');
 });
 var httpsServer = http.createServer(app);
 httpsServer.listen(8888, function () {
